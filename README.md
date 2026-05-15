@@ -1,3 +1,4 @@
+### Preparcial 2
 # Travel Plans API
 
 API REST modular en NestJS para la gestión de planes de viaje con integración a RestCountries.
@@ -45,3 +46,7 @@ DELETE /travel-plans/:id Eliminar uno
 
 ### Eliminar plan
 **DELETE** `http://localhost:3000/travel-plans/1`
+
+### Reporte de cambios 
+
+La entidad TravelPlan guarda los gastos en un campo llamado expenses usando el tipo simple-json de SQLite o sea que el arreglo de gastos se convierte en un texto JSON y se guarda dentro de una sola columna de la base de datos.Cuando se quiere agregar un nuevo gasto, el servicio primero busca el plan completo en la base de datos, luego convierte el JSON nuevamente en un arreglo, agrega el nuevo gasto usando el operador spread ([...plan.expenses, dto]) y finalmente guarda otra vez todo el objeto actualizado con save().

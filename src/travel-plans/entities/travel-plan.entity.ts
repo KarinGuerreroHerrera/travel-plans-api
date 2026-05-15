@@ -18,6 +18,12 @@ export class TravelPlan {
   @Column()
   countryCode: string;
 
+  @Column()
+  userId: number;
+
+  @Column({ type: 'simple-json', default: '[]' })
+  expenses: { description: string; amount: number; category: string }[];
+
   @ManyToOne(() => Country, { eager: true })
   @JoinColumn({ name: 'countryCode', referencedColumnName: 'alpha3Code' })
   country: Country;
